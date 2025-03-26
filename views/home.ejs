@@ -1,0 +1,63 @@
+<html>
+    <head><title>Home</title>
+    <%- include('./partials/style.ejs') %>
+    </head>
+
+    <body>
+        <%- include('./partials/topbar.ejs') %>
+        <div class="container">
+        <div class="sort">
+            <label for="sort">Sort by: </label>
+            <select id="sort" onchange="window.location.href='/?page=1&sort='+this.value">
+                <option value="title" <% if(sort === 'title') { %>selected <% } %>  >Title</option>
+                <option value="createdAt" <% if(sort=== 'createdAt') { %> selected <%}%>>Date</option>
+            </select>
+
+        </div>
+    <script>
+        let typingTimer;
+        let typingDelay = 500;
+    function searchBlogs() {
+        clearTimeout(typingTimer);
+
+        typingTimer = setTimeout(() => {
+            let searchTerm = document.getElementById("search-box").value;
+        let sortValue = document.getElementById("sort").value;
+        window.location.href = `/?page=1&sort=${sortValue}&search=${searchTerm}`;
+        }, typingDelay);
+        
+    }
+</script>
+
+
+        <div class="search-bar">
+            <label for="search-box">Search blog:</label>
+            <input id="search-box" placeholder="Search blogs here ..." value="<%= search %>" onkeyup="searchBlogs()" ></input>
+
+        </div>
+    </div>
+
+
+        <% if (blogData && blogData.length > 0) { %>
+            <% blogData.forEach(blog => { %>
+                <div class="blog-card">
+                    <div class="blog-title"><strong><%= blog.title %></strong></div>
+                    <div class="blog-body"><%= blog.body %></div><br />
+                    <div class="blog-body">id= <%= blog._id %></div>
+                    
+                </div>
+                <% }); %>
+        <% } else { %>
+            <p>No blogs available.</p>
+        <% } %>
+
+
+        <div class="pagination">
+            <% for(let i=1; i <= pages ; i++) { %>
+                
+                    <a href="/?page=<%=i%>"  <% if(i==current) { %> class="activePage" <% } %> ><%=i%> </a>
+                <% }  %> 
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<div class="top-bar">
+    <div class="tabs">
+        <div class="tab">Home</div>
+        <% if(isAuthenticated) {%>
+        <a class="tab" href="/myblogs">My blogs</a>
+        <% } %>
+    </div>
+
+    <div class="logout">
+        <% if(isAuthenticated) { %>
+        <a id="logoutButton" href="/logout">Logout</a>
+        <% } else { %>
+            <a id="loginButton" href="/login">Login</a>
+        <% } %>
+
+    </div>
+
+</div>

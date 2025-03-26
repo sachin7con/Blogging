@@ -1,0 +1,27 @@
+<html>
+    <head><title>My Blogs</title>
+    <%- include('./partials/style.ejs') %>
+    </head>
+
+    <body>
+        <%- include('./partials/topbar.ejs') %>
+         <br>           
+        <a class="add-button" href="/addblog">Addblog+</a>
+        <br>
+
+        <% if (blogData && blogData.length > 0) { %>
+            <% blogData.forEach(blog => { %>
+                <div class="blog-card">
+                    <div class="blog-title"><strong><%= blog.title %></strong></div><br>
+                    <div class="blog-body"><%= blog.body %></div><br>
+                    <div class="blog-controls">
+                        <a class="edit-button" href="editblog?blogId=<%= blog._id %>" >Edit</a>
+                        <a class="delete-button" href="deleteblog?blogId=<%= blog._id %>">Delete</a>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No blogs available.</p>
+        <% } %>
+    </body>
+</html>

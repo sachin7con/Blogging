@@ -1,0 +1,16 @@
+<html>
+    <head><title>My Blogs</title>
+    <%- include('./partials/style.ejs') %>
+    </head>
+
+    <body>
+        <%- include('./partials/topbar.ejs') %>
+        <form method="POST" action="createBlog" class="blog-form">
+            <input type="text" name="title" placeholder="Enter Blog's title " />
+            <br />
+            <textarea name="body" placeholder="Write your blog here ..." rows="25" ></textarea>
+            <br />
+            <input class="add-button" type="submit" value="Add" />
+        </form>
+    </body>
+</html>
