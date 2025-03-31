@@ -41,9 +41,9 @@
         <% if (blogData && blogData.length > 0) { %>
             <% blogData.forEach(blog => { %>
                 <div class="blog-card">
-                    <div class="blog-title"><strong><%= blog.title %></strong></div>
+                    <div class="blog-title"><strong><%= blog.title %></strong></div><br />
                     <div class="blog-body"><%= blog.body %></div><br />
-                    <div class="blog-body">id= <%= blog._id %></div>
+                    <div class="blog-id">id: <%= blog._id %></div>
                     
                 </div>
                 <% }); %>
