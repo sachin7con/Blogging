@@ -27,6 +27,7 @@ app.use(checAuth);
 
 app.use(router);
 
-app.listen(3000, ()=> {
-    console.log('listening to port 3000')
-})
+const port = process.env.PORT || 3000;  // Fallback to 3000 if PORT isn't set
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
